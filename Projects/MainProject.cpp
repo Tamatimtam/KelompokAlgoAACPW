@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int N = 10; // number of books
+const int N = 50; // number of books
 
 // function prototypes
 // searches for a Buku with the given name in the given list of Bukus
@@ -43,7 +43,13 @@ bool getYesNo() {
 
 int main() {
     // list of Bukus
-    string Bukus[N] = {"Harry Potter", "Game of Thrones","Kamus Oxford","C++ For Beginner","Guiness World Record","Laskar Pelangi","The Art Of War","Dunia Shofie","Supernova","Atlas Dunia"};
+    string Bukus[N] = {
+	"5 cm", "Alice in Wonderland", "Atlas Dunia", "Atlas Indonesia", "Atomic Habits", "Bumi", "Bumi Manusia", "C++ For Beginner", 
+	"Chronicles of Narnia", "Dunia Shofie", "Game of Thrones", "Girl Who Kicked the Hornets' Nest", "Girl with the Dragon Tattoo", "Great Gatsby", "Guiness World Record", 
+	"Harry Potter", "Habibie Ainun", "Help", "Hunger Games", "Hujan", "Kamus Oxford", "Kite Runner", "Laskar Pelangi", 
+	"Laskar Pelangi", "Lord of the Flies", "Lord of the Rings", "Negeri 5 Menara", "Negeri di Ujung Tanduk", 
+	"Negeri Para Bedebah", "Pergi", "Pulang", "Pride and Prejudice", "Ready Player One", "Sang Pemimpi", "Sapiens", "Selection", "Sherlock Holmes", 
+	"Supernova", "Think and Grow Rich", "To Kill a Mockingbird", "Twilight"};
 
     // ask for student NIM
     string nim;
@@ -85,6 +91,7 @@ int main() {
                 // search for Buku
                 bool done = false;
                 while (!done) {
+                	system("cls");
                     cout << "Enter name of Buku to search for: ";
                     string key;
                     cin.ignore();
@@ -92,7 +99,7 @@ int main() {
                     cout << endl;
 
                     searchBuku(Bukus, key);
-
+                    
                     // ask if user wants to search for another Buku
                     cout << "Search for another Buku? (y/n) ";
                     done = !getYesNo();
