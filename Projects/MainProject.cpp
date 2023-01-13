@@ -1,105 +1,130 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+
 using namespace std;
 
-const int N = 10; // number of journals
+const int N = 10; // number of books
 
 // function prototypes
-void searchJournal(string journals[], string key);
-bool getYesNo();
+// searches for a Buku with the given name in the given list of Bukus
+// and outputs a message indicating whether the Buku was found or not
+void searchBuku(string Bukus[], string key) {
+    
+    //!!!WIP BELOM MASUK FLOWCHART!!! -Pratama
+    
+    // convert the key to lowercase
+    std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+    // convert all of the book names in the array to lowercase
+    for (int i = 0; i < N; i++) {
+        std::transform(Bukus[i].begin(), Bukus[i].end(), Bukus[i].begin(), ::tolower);
+    }
+    bool found = false;
+    for (int i = 0; i < N; i++) {
+        if (Bukus[i] == key) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        cout << "Buku TERSEDIA!" << endl;
+    }
+    else {
+        cout << "Buku TIDAK TERSEDIA." << endl;
+    }
+}
+
+// get rid, put into main !! -Pratama
+bool getYesNo() {
+    char c;
+    cin >> c;
+    return c == 'y';
+}
 
 int main() {
-    // list of journals
-    string journals[N] = {"Journal1", "Journal2"};
+    // list of Bukus
+    string Bukus[N] = {"Harry Potter", "Game of Thrones","Kamus Oxford","C++ For Beginner","Guiness World Record","Laskar Pelangi","The Art Of War","Dunia Shofie","Supernova","Atlas Dunia"};
 
     // ask for student NIM
-    long nim;
+    string nim;
     cout << "Enter student NIM: ";
     cin >> nim;
     cout << endl;
 
     // check if NIM is in the list
     bool found = false;
-    long a[] = {2207421031,2207421032,2207421033,2207421034,2207421035,2207421036,2207421037,2207421038,
-    2207421039,2207421040,2207421041,2207421042,2207421043,2207421044,2207421045,2207421046,2207421047,
-    2207421048,2207421049,2207421050,2207421051,2207421052,2207421053,2207421054,2207421055,2207421056,
-    2207421057,2207421058,2207421059};
+    string a[] = {"2207421031","2207421032","2207421033","2207421034","2207421035","2207421036","2207421037","2207421038",
+    "2207421039","2207421040","2207421041","2207421042","2207421043","2207421044","2207421045","2207421046","2207421047",
+    "2207421048","2207421049","2207421050","2207421051","2207421052","2207421053","2207421054","2207421055","2207421056",
+    "2207421057","2207421058","2207421059"};
+    //!!!WIP BELOM MASUK FLOWCHART!!! -Pratama
+  string names[] = {"Muhammad Khoiru Mufid","Kevin Alonzo Manuel Bakara","Devina Anggraini","Alif Rendina Pamungkas","Ibrahim Alvaro",
+  "M. Berryl Muchtada","Reishafa Armelia Armando","Rafi Rasya Husein Panjaitan","Muhammad Abian Abdi Pratama","Pratama Varian Andika Parulian",
+  "Alfarizki Nurachman","Azzuri Putra Mahendra","Christian Nataniel Yosua Purba","Maria Intan Pretty Stefani","Muhammad Abdur Rochman","Itsar Hevara",
+  "Abdurrahman Ammar Ihsan","Wahyu Priambodo","Salsabilla Aulia","Izzaturachmi","Jonathan Victorian Wijaya","Fachrul Rosi","Rizki Alfarisi","Theo Dhiya Pratama",
+  "Muhammad Haikal Fadhillah","Muhammad Brian Azura Nixon","Shaquille Ariza Hidayat","Safina Ayu Rasya","Cornelius Yuli Rosdianto"};
+
+
+
     for (int i = 0; i < 29; i++) {
-        if (nim == a[i]) {
-            found = true;
-            break;
-        }
-    }a
+    if (nim == a[i]) {
+        found = true;
+        cout << "Welcome " << names[i] << "!" << endl;
+        break;
+    }
+}
 
     if (found) {
-        // search for journal
-        bool done = false;
-        while (!done) {
-            cout << "Enter name of journal to search for: ";
-            string key;
-            cin >> key;
-            cout << endl;
+        int choice;
+        cout << "Enter 1 to search for a book, or 2 to list all books: ";
+        cin >> choice;
+        cout << endl;
 
-            searchJournal(journals, key);
+        switch (choice) {
+            case 1: {
+                // search for Buku
+                bool done = false;
+                while (!done) {
+                    cout << "Enter name of Buku to search for: ";
+                    string key;
+                    cin.ignore();
+                    getline(cin,key);
+                    cout << endl;
 
-            // ask if user wants to search for another journal
-            cout << "Search for another journal? (y/n) ";
-            done = !getYesNo();
-            cout << endl;
+                    searchBuku(Bukus, key);
+
+                    // ask if user wants to search for another Buku
+                    cout << "Search for another Buku? (y/n) ";
+                    done = !getYesNo();
+                    cout << endl;
+                }
+                break;
+            }
+            case 2: {
+                bool done = false;
+                while (!done){
+                
+                int num;
+                for (int i = 0; i < N; i++) {
+                    cout << i+1 <<"."<< Bukus[i] << endl;
+                }
+                cout << "Enter the number of the book you want: " << endl;
+                cin >> num;
+                cout << Bukus[num-1]<<" TERSEDIA!" << endl;
+                // ask if user wants to search for another Buku
+                    cout << "Search for another Buku? (y/n) ";
+                    done = !getYesNo();
+                    cout << endl;
+                }
+                break;
+            }
+            default: {
+                cout << "Invalid choice. Please try again." << endl;
+                break;
+            }
         }
-
         cout << "TERIMAKASIH" << endl;
-    }
-    else {
+    } else {
         cout << "NIM tidak terdaftar." << endl;
     }
-
-int main() {
-	int a[] = {2207421031,2207421032,2207421033,2207421034,2207421035,2207421036,2207421037,2207421038,
-	2207421039,2207421040,2207421041,2207421042,2207421043,2207421044,2207421045,2207421046,2207421047,
-	2207421048,2207421049,2207421050,2207421051,2207421052,2207421053,2207421054,2207421055,2207421056,
-	2207421057,2207421058,2207421059};
-	int i=0, nim, ada;
-	
-	do {
-		
-    cout << " Masukkan NIM Anda: ";
-    cin >> n;
-    cout << endl;
-			     
-	while (i<29){
-	    if (a[i] == nim){
-		    ada++;
-	    }
-		i++;
-	}
-	
-	} while (ada == 0);		
-	return 0;
-}
-
-// searches for a journal with the given name in the given list of journals
-// and outputs a message indicating whether the journal was found or not
-void searchJournal(string journals[], string key) {
-    bool found = false;
-    for (int i = 0; i < N; i++) {
-        if (journals[i] == key) {
-            found = true;
-            break;
-        }
-    }
-
-    if (found) {
-        cout << "JOURNAL TERSEDIA!" << endl;
-    }
-    else {
-        cout << "JOURNAL TIDAK TERSEDIA." << endl;
-    }
-}
-
-// get rid, put into main !!
-bool getYesNo() {
-    char c;
-    cin >> c;
-    return c == 'y';
 }
