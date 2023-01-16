@@ -18,8 +18,8 @@ void searchBuku(string Bukus[], string key) {
     // convert all of the book names in the array to lowercase
     for (int i = 0; i < N; i++) {
         std::transform(Bukus[i].begin(), Bukus[i].end(), Bukus[i].begin(), ::tolower);
-    }
-    bool found = false;
+    }//to-lowercase function by Pratama
+    bool found = false;//contributed by Azzuri
     for (int i = 0; i < N; i++) {
         if (Bukus[i] == key) {
             found = true;
@@ -69,7 +69,7 @@ int main() {
   "Alfarizki Nurachman","Azzuri Putra Mahendra","Christian Nataniel Yosua Purba","Maria Intan Pretty Stefani","Muhammad Abdur Rochman","Itsar Hevara",
   "Abdurrahman Ammar Ihsan","Wahyu Priambodo","Salsabilla Aulia","Izzaturachmi","Jonathan Victorian Wijaya","Fachrul Rosi","Rizki Alfarisi","Theo Dhiya Pratama",
   "Muhammad Haikal Fadhillah","Muhammad Brian Azura Nixon","Shaquille Ariza Hidayat","Safina Ayu Rasya","Cornelius Yuli Rosdianto"};
-
+   //list of names by Azzuri
 
 
     for (int i = 0; i < 29; i++) {
