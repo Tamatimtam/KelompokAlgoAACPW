@@ -7,8 +7,8 @@ using namespace std;
 const int N = 50; // number of books
 
 // function prototypes
-// searches for a Buku with the given name in the given list of Bukus
-// and outputs a message indicating whether the Buku was found or not
+// searches for a Buku with the given name in the given list of books
+// and outputs a message indicating whether the book was found or not
 void searchBuku(string Bukus[], string key) {
     
     //!!!WIP BELOM MASUK FLOWCHART!!! -Pratama
@@ -42,7 +42,7 @@ bool getYesNo() {
 }
 
 int main() {
-    // list of Bukus
+    // list of Bukus -Christian
     string Bukus[N] = {
 	"5 cm", "Alice in Wonderland", "Atlas Dunia", "Atlas Indonesia", "Atomic Habits", "Bumi", "Bumi Manusia", "C++ For Beginner", 
 	"Chronicles of Narnia", "Dunia Shofie", "Game of Thrones", "Girl Who Kicked the Hornets' Nest", "Girl with the Dragon Tattoo", "Great Gatsby", "Guiness World Record", 
@@ -92,7 +92,7 @@ int main() {
                 bool done = false;
                 while (!done) {
                 	system("cls");
-                    cout << "Enter name of Buku to search for: ";
+                    cout << "Enter name of book to search for: ";
                     string key;
                     cin.ignore();
                     getline(cin,key);
@@ -101,13 +101,14 @@ int main() {
                     searchBuku(Bukus, key);
                     
                     // ask if user wants to search for another Buku
-                    cout << "Search for another Buku? (y/n) ";
+                    cout << "Search for another book? (y/n) ";
                     done = !getYesNo();
                     cout << endl;
                 }
                 break;
             }
             case 2: {
+            	//option 2: list all available books -Christian
                 bool done = false;
                 while (!done){
                 
@@ -118,8 +119,8 @@ int main() {
                 cout << "Enter the number of the book you want: " << endl;
                 cin >> num;
                 cout << Bukus[num-1]<<" TERSEDIA!" << endl;
-                // ask if user wants to search for another Buku
-                    cout << "Search for another Buku? (y/n) ";
+                // ask if user wants to search for another book
+                    cout << "Search for another book? (y/n) ";
                     done = !getYesNo();
                     cout << endl;
                 }
