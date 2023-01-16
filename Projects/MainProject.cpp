@@ -44,12 +44,13 @@ bool getYesNo() {
 int main() {
     // list of Bukus -Christian
     string Bukus[N] = {
-	"5 cm", "Alice in Wonderland", "Atlas Dunia", "Atlas Indonesia", "Atomic Habits", "Bumi", "Bumi Manusia", "C++ For Beginner", 
-	"Chronicles of Narnia", "Dunia Shofie", "Game of Thrones", "Girl Who Kicked the Hornets' Nest", "Girl with the Dragon Tattoo", "Great Gatsby", "Guiness World Record", 
-	"Harry Potter", "Habibie Ainun", "Help", "Hunger Games", "Hujan", "Kamus Oxford", "Kite Runner", "Laskar Pelangi", 
+	"5 cm","A Study in Scarlet", "Alice in Wonderland", "Atlas Dunia", "Atlas Indonesia", "Atomic Habits", "Bumi", "Bumi Manusia", "C++ For Beginner", 
+	"Chronicles of Narnia","Death on the Nile","Dunia Shofie", "Game of Thrones", "Girl Who Kicked the Hornets' Nest", "Girl with the Dragon Tattoo", "Great Gatsby", "Guiness World Record", 
+	"Harry Potter", "Habibie Ainun", "Help", "Hunger Games", "Hujan", "Kamus Oxford", "Kite Runner", "Laskar Pelangi","Murder on The Orient Express",
 	"Laskar Pelangi", "Lord of the Flies", "Lord of the Rings", "Negeri 5 Menara", "Negeri di Ujung Tanduk", 
-	"Negeri Para Bedebah", "Pergi", "Pulang", "Pride and Prejudice", "Ready Player One", "Sang Pemimpi", "Sapiens", "Selection", "Sherlock Holmes", 
-	"Supernova", "Think and Grow Rich", "To Kill a Mockingbird", "Twilight"};
+	"Negeri Para Bedebah","Perahu Kertas","Percy Jackson and the Olympians", "Pergi", "Pulang", "Pride and Prejudice", "Ready Player One", 
+	"Robohnya Surau Kami","Sang Pemimpi", "Sapiens", "Selection", "Sherlock Holmes", "Supernova","The Hound of the Baskervilles",
+	"The Memoirs of Sherlock Holmes","The Shawsank Redemption","Think and Grow Rich", "To Kill a Mockingbird", "Twilight"};
 
     // ask for student NIM
     string nim;
@@ -113,12 +114,20 @@ int main() {
                 while (!done){
                 
                 int num;
+                system("cls");
                 for (int i = 0; i < N; i++) {
                     cout << i+1 <<"."<< Bukus[i] << endl;
                 }
+    
                 cout << "Enter the number of the book you want: " << endl;
                 cin >> num;
+                if (num<=N){
+				
                 cout << Bukus[num-1]<<" TERSEDIA!" << endl;
+            	}
+            	else{
+            	cout << "Maaf Nomor Tidak Valid!\n";
+				}
                 // ask if user wants to search for another book
                     cout << "Search for another book? (y/n) ";
                     done = !getYesNo();
