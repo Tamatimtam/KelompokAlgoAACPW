@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
@@ -27,10 +29,14 @@ void searchBuku(string Bukus[], string key) {
         }
     }
     if (found) {
-        cout << "Buku TERSEDIA!" << endl;
+        cout << "--------------------------\n"; // Wahyu
+        cout << "[ THE BOOK IS AVAILABLE! ]\n";
+        cout << "--------------------------\n\n"; // Wahyu
     }
     else {
-        cout << "Buku TIDAK TERSEDIA." << endl;
+        cout << "------------------------------\n";
+        cout << "[ THE BOOK IS NOT AVAILABLE! ]\n";
+        cout << "------------------------------\n\n";
     }
 }
 
@@ -44,20 +50,26 @@ bool getYesNo() {
 int main() {
     // list of Bukus -Christian
     string Bukus[N] = {
-	"5 cm","A Study in Scarlet", "Alice in Wonderland", "Atlas Dunia", "Atlas Indonesia", "Atomic Habits", "Bumi", "Bumi Manusia", "C++ For Beginner", 
-	"Chronicles of Narnia","Death on the Nile","Dunia Shofie", "Game of Thrones", "Girl Who Kicked the Hornets' Nest", "Girl with the Dragon Tattoo", "Great Gatsby", "Guiness World Record", 
-	"Harry Potter", "Habibie Ainun", "Help", "Hunger Games", "Hujan", "Kamus Oxford", "Kite Runner", "Laskar Pelangi","Murder on The Orient Express",
-	"Laskar Pelangi", "Lord of the Flies", "Lord of the Rings", "Negeri 5 Menara", "Negeri di Ujung Tanduk", 
-	"Negeri Para Bedebah","Perahu Kertas","Percy Jackson and the Olympians", "Pergi", "Pulang", "Pride and Prejudice", "Ready Player One", 
-	"Robohnya Surau Kami","Sang Pemimpi", "Sapiens", "Selection", "Sherlock Holmes", "Supernova","The Hound of the Baskervilles",
-	"The Memoirs of Sherlock Holmes","The Shawsank Redemption","Think and Grow Rich", "To Kill a Mockingbird", "Twilight"};
+    "5 cm","A Study in Scarlet", "Alice in Wonderland", "Atlas Dunia", "Atlas Indonesia", "Atomic Habits", "Bumi", "Bumi Manusia", "C++ For Beginner", 
+    "Chronicles of Narnia","Death on the Nile","Dunia Shofie", "Game of Thrones", "Girl Who Kicked the Hornets' Nest", "Girl with the Dragon Tattoo", "Great Gatsby", "Guiness World Record", 
+    "Harry Potter", "Habibie Ainun", "Help", "Hunger Games", "Hujan", "Kamus Oxford", "Kite Runner", "Laskar Pelangi","Murder on The Orient Express",
+    "Laskar Pelangi", "Lord of the Flies", "Lord of the Rings", "Negeri 5 Menara", "Negeri di Ujung Tanduk", 
+    "Negeri Para Bedebah","Perahu Kertas","Percy Jackson and the Olympians", "Pergi", "Pulang", "Pride and Prejudice", "Ready Player One", 
+    "Robohnya Surau Kami","Sang Pemimpi", "Sapiens", "Selection", "Sherlock Holmes", "Supernova","The Hound of the Baskervilles",
+    "The Memoirs of Sherlock Holmes","The Shawsank Redemption","Think and Grow Rich", "To Kill a Mockingbird", "Twilight"};
+
+    // Banner - Wahyu
+    cout << "====================================================================================\n";
+    cout << "| <<<<<<<<<<<<<<<<<<<<<<<<<<< WELCOME TO BukuKita APP >>>>>>>>>>>>>>>>>>>>>>>>>>>> |\n";
+    cout << "====================================================================================\n";
+    cout << "| Bingung mau cari buku apa? Cari di BukuKita aja, dijamin lengkap dan berkualitas |\n";
+    cout << "====================================================================================\n\n";
 
     // ask for student NIM
     string nim;
-    cout << "Enter student NIM: ";
+    cout << "[Login] Enter student NIM: ";
     cin >> nim;
-    cout << endl;
-
+    
     // check if NIM is in the list
     bool found = false;
     string a[] = {"2207421031","2207421032","2207421033","2207421034","2207421035","2207421036","2207421037","2207421038",
@@ -74,16 +86,17 @@ int main() {
 
 
     for (int i = 0; i < 29; i++) {
-    if (nim == a[i]) {
-        found = true;
-        cout << "Welcome " << names[i] << "!" << endl;
-        break;
+       if (nim == a[i]) {
+            found = true;
+            cout << "..............[SUCCESS]..............\n\n";
+            cout << "=== [ Welcome " << names[i] << "! ] ===\n\n";
+            break;
+        }
     }
-}
 
     if (found) {
         int choice;
-        cout << "Enter 1 to search for a book, or 2 to list all books: ";
+        cout << "[Input] Enter (1) to search for a book, or (2) to list all books: ";
         cin >> choice;
         cout << endl;
 
@@ -92,8 +105,8 @@ int main() {
                 // search for Buku
                 bool done = false;
                 while (!done) {
-                	system("cls");
-                    cout << "Enter name of book to search for: ";
+                    system("cls||clear");
+                    cout << "[Input] Enter name of book to search for: ";
                     string key;
                     cin.ignore();
                     getline(cin,key);
@@ -102,46 +115,62 @@ int main() {
                     searchBuku(Bukus, key);
                     
                     // ask if user wants to search for another Buku
-                    cout << "Search for another book? (y/n) ";
+                    cout << "[Confirm] Search for another book? (y/n): ";
                     done = !getYesNo();
                     cout << endl;
                 }
                 break;
             }
             case 2: {
-            	//option 2: list all available books -Christian
+                //option 2: list all available books -Christian
                 bool done = false;
                 while (!done){
                 
                 int num;
-                system("cls");
+                system("cls||clear");
+                
+                // Wahyu
+                cout << "+-----------------------------------------+\n";
+                cout << "| >>>>>>>>>>>>> BOOK LIST <<<<<<<<<<<<<<< |\n";
+                cout << "+-----------------------------------------+\n";
+                
                 for (int i = 0; i < N; i++) {
-                    cout << i+1 <<"."<< Bukus[i] << endl;
+                    if(i<9)
+                        cout << "| " << i+1 <<". ) "<< left << setw(35) << Bukus[i] << "|\n"; // add space
+                    else
+                        cout << "| " << i+1 <<".) "<< left << setw(35) << Bukus[i] << "|\n";
                 }
-    
-                cout << "Enter the number of the book you want: " << endl;
+                cout << "+-----------------------------------------+\n";
+                
+                cout << "[Input] Enter the number of the book you want: ";
                 cin >> num;
+                cout << "\n";
+                
                 if (num<=N){
-				
-                cout << Bukus[num-1]<<" TERSEDIA!" << endl;
-            	}
-            	else{
-            	cout << "Maaf Nomor Tidak Valid!\n";
-				}
+                    cout << "=== [ " << Bukus[num-1]<<" BOOK IS AVAILABLE! ] ===\n\n";
+                }
+                else{
+                    cout << "[Error] Invalid numbers input!\n\n";
+                }
                 // ask if user wants to search for another book
-                    cout << "Search for another book? (y/n) ";
+                    cout << "[Confirm] Search for another book? (y/n): ";
                     done = !getYesNo();
                     cout << endl;
                 }
                 break;
             }
             default: {
-                cout << "Invalid choice. Please try again." << endl;
+                cout << "[Error] Invalid choice. Please try again.\n";
                 break;
             }
         }
-        cout << "TERIMAKASIH" << endl;
+        cout << "-------------\n";
+        cout << "[ THANK YOU ]\n";
+        cout << "-------------\n";
     } else {
-        cout << "NIM tidak terdaftar." << endl;
+        cout << "...........[FAILED]............\n\n";
+        cout << "[ YOUR NIM IS NOT REGISTERED! ]\n";
     }
+
+    return 0;
 }
