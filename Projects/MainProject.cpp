@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iomanip>
+
 using namespace std;
 
 const int N = 50; // number of books
