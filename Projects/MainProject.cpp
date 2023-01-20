@@ -9,6 +9,10 @@ using namespace std;
 int book_key;
 const int N = 50; // number of books
 
+void testfunction(){
+    cout << "Test";
+}
+
 // function prototypes
 // searches for a Buku with the given name in the given list of books
 // and outputs a message indicating whether the book was found or not
@@ -184,7 +188,7 @@ int main() {
             }
         }
         cout << "-------------\n";
-        cout << "[ THANK YOU ]\ n";
+        cout << "[ THANK YOU ]\n";
         cout << "-------------\n";
 
        
